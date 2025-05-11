@@ -1,0 +1,18 @@
+{
+	"project": {
+		"name": "earlySeason",
+		"slot": 1,
+		"description": "886y early season code ",
+		"platform": "V5",
+		"creationDate": "Sun, 11 May 2025 05:39:34 GMT",
+		"language": "cpp",
+		"sdkVersion": "V5_20240802_15_00_00",
+		"cpp": {
+			"includePath": []
+		}
+	},
+	"extension": {
+		"version": "0.7.2025041600",
+		"json": 1
+	}
+}
