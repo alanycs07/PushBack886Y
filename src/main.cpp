@@ -9,7 +9,7 @@ Motor leftFrontMotor(-7);
 MotorGroup Front_intake_mg({-13});    // Creates a motor group with forwards ports 1 & 3 and reversed port 2
 Motor Redirect_mg(-2);
 MotorGroup Top_Intake({20});
-Imu imu(6);
+Imu imu(12);
 Optical opticalSensor(10);
 adi::Pneumatics Scraper('A', false, false);
 adi::Pneumatics Descore('B', true, false);
@@ -17,9 +17,11 @@ adi::Pneumatics Trapdoor('C', false, false);
 bool ScraperIsExtend;
 bool alinerState;
 Controller master(pros::E_CONTROLLER_MASTER);
-pros::Rotation vertical_sensor(-18);
+pros::Rotation vertical_sensor(21);
+pros::Rotation horizontal_sensor(9);
 // vertical tracking wheel
-lemlib::TrackingWheel vertical_tracking_wheel(&vertical_sensor, lemlib::Omniwheel::NEW_2,0.5); //distance tbd
+lemlib::TrackingWheel vertical_tracking_wheel(&vertical_sensor, lemlib::Omniwheel::NEW_325, 0); //distance tbd
+lemlib::TrackingWheel horizontal_tracking_wheel(&horizontal_sensor, lemlib::Omniwheel::NEW_2, 4.2); //distance tbd
 
 /**
  * A callback function for LLEMU's center button.
@@ -39,28 +41,28 @@ lemlib::Drivetrain drivetrain(&left_mg, // left motor group
 
 lemlib::OdomSensors sensors(&vertical_tracking_wheel, // vertical tracking wheel 1, set to null
                             nullptr, // vertical tracking wheel 2, set to nullptr as we are using IMEs
-                            nullptr, // horizontal tracking wheel 1
+                            &horizontal_tracking_wheel, // horizontal tracking wheel 1
                             nullptr, // horizontal tracking wheel 2, set to nullptr as we don't have a second one
                             &imu // inertial sensor
 );
 
 // lateral PID controller (forward backward)
-lemlib::ControllerSettings lateral_controller(3.75, // proportional gain (kP)
+lemlib::ControllerSettings lateral_controller(5, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              10, // derivative gain (kD)
+                                              3, // derivative gain (kD)
                                               0, // anti windup
-                                              0, // small error range, in inches
-                                              0, // small error range timeout, in milliseconds
-                                              0, // large error range, in inches
-                                              0, // large error range timeout, in milliseconds
-                                              0 // maximum acceleration (slew)
+                                              1, // small error range, in inches
+                                              100, // small error range timeout, in milliseconds
+                                              3, // large error range, in inches
+                                              500, // large error range timeout, in milliseconds
+                                              20 // maximum acceleration (slew)
 );
 
 // angular PID controller (turning)
-lemlib::ControllerSettings angular_controller(3.25, // proportional gain (kP)
+lemlib::ControllerSettings angular_controller(2, // proportional gain (kP)
                                               0, // integral gain (kI)
-                                              33, // derivative gain (kD)
-                                              2, // anti windup
+                                              8, // derivative gain (kD)
+                                              3, // anti windup
                                               1, // small error range, in degrees
                                               100, // small error range timeout, in milliseconds
                                               3, // large error range, in degrees
@@ -169,15 +171,38 @@ void competition_initialize() {}
  * from where it left off.
  */
 void autonomous() {
-	left_mg.set_brake_mode(pros::MotorBrake::hold);
-	right_mg.set_brake_mode(pros::MotorBrake::hold);
-	pros::Task([=]{
-		Front_intake_mg.move(-127);
-		delay(200);
-		Front_intake_mg.move(127);
-	});
+	left_mg.set_brake_mode(pros::MotorBrake::coast);
+	right_mg.set_brake_mode(pros::MotorBrake::coast);
+	// pros::Task([=]{
+	// 	Front_intake_mg.move(-127);
+	// 	delay(200);
+	// 	Front_intake_mg.move(127);
+	// });
 
-	chassis.moveToPoint(0, 20, 2000);
+	//solo awp
+
+	chassis.setPose(0, 0, -17);
+	chassis.moveToPoint(-10, 44, 800, {.maxSpeed = 70});
+	Front_intake_mg.move(127);
+	chassis.turnToPoint(-27, 55.5, 600);
+	chassis.moveToPoint(-27, 54, 800);
+	chassis.moveToPose(12.5, 62, -155, 2000, {.forwards = false, .minSpeed = 30});
+	chassis.waitUntilDone();
+	delay(100);
+	Top_Intake.move(90);
+	Front_intake_mg.move(95);
+	Trapdoor.extend();
+	delay(1500);
+	Top_Intake.move(0);
+	Front_intake_mg.move(0);
+	Trapdoor.retract();
+	chassis.moveToPoint(-41, 18, 1500, {.maxSpeed = 80, .minSpeed = 35});
+	chassis.turnToHeading(180, 800);
+	chassis.moveToPoint(-41, 6, 2000, {.maxSpeed = 80, .minSpeed = 65});
+	Scraper.toggle();
+
+
+	
 	//redirect = the thing used in color sort
 	//Rear intake is the back roller
 		//rear intake negative is score on middle goal
@@ -538,7 +563,7 @@ void opcontrol() {
 			Front_intake_mg.move(127);
 		}
 		else if (master.get_digital(DIGITAL_R2)) {
-			Top_Intake.move(127);
+			Top_Intake.move(110);
 			Front_intake_mg.move(95);
 			Trapdoor.extend();
 		}
