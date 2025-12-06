@@ -184,6 +184,111 @@ void autonomous() {
 	// });
 
 
+	//NEWEST SKILLS
+
+	chassis.setPose(46.5, -16, 180);
+	chassis.moveToPoint(45, -35, 800, {.minSpeed = 40, .earlyExitRange = 2});
+	Descore.retract();
+	chassis.swingToHeading(90, DriveSide::LEFT, 700);
+	chassis.waitUntilDone();
+	Scraper.extend();
+	Trapdoor.retract();
+	delay(380);
+	chassis.moveToPoint(54, -53, 500);
+	Front_intake_mg.move(127);
+	chassis.waitUntilDone();
+	delay(1800);
+	chassis.moveToPoint(17, -54.3, 1000, {.forwards = false, .maxSpeed = 90});
+	chassis.waitUntilDone();
+	Top_Intake.move(127);
+	delay(1600);
+	Top_Intake.move(0);
+	Scraper.retract();
+	chassis.swingToHeading(10, DriveSide::LEFT, 900, {.maxSpeed = 80});
+	chassis.moveToPoint(44.5, 34.5, 2500, {.maxSpeed = 95});
+	pros::delay(200);
+	chassis.turnToHeading(90, 1000);
+	chassis.waitUntilDone();
+	Scraper.extend();
+	Trapdoor.retract();
+	delay(380);
+	chassis.moveToPoint(54, 39.5, 1500);
+	Front_intake_mg.move(127);
+	chassis.waitUntilDone();
+	delay(1200);
+	chassis.moveToPoint(15, 42.5, 1000, {.forwards = false, .maxSpeed = 90});
+	chassis.waitUntilDone();
+	Top_Intake.move(127);
+	delay(1500);
+	Top_Intake.move(0);
+	Scraper.retract();
+	chassis.swingToHeading(-10, DriveSide::LEFT, 700);
+	chassis.turnToHeading(-90, 800);
+	chassis.moveToPoint(-34.3, 55.0, 1500, {.maxSpeed = 80, .earlyExitRange = 1});
+	Front_intake_mg.move(0);
+	chassis.moveToPoint(-48, 44, 950, {.maxSpeed = 60});
+	chassis.turnToHeading(-90, 800);
+	chassis.waitUntilDone();
+	Scraper.extend();
+	Trapdoor.retract();
+	delay(380);
+	chassis.moveToPoint(-64, 41, 1500); //3rd tube
+	Front_intake_mg.move(127);
+	chassis.waitUntilDone();
+	delay(1200);
+	chassis.moveToPoint(-45, 43, 1000, {.forwards = false, .minSpeed = 30});
+	Scraper.retract();
+	chassis.turnToHeading(160, 800);
+	chassis.moveToPoint(-46.4, -48.1, 2500, {.maxSpeed = 110,.minSpeed = 20}); 
+	chassis.waitUntilDone();
+	pros::delay(200);
+	chassis.turnToHeading(-90, 800);
+	chassis.moveToPoint(-27, -55.5, 1000, {.forwards = false, .maxSpeed = 90});//3rd time score
+	chassis.waitUntilDone();
+	Top_Intake.move(127);
+	delay(1500);
+	Top_Intake.move(0);
+	chassis.moveToPoint(-65, -55, 1500, {.maxSpeed = 60}); 
+	Scraper.extend();
+	Front_intake_mg.move(127);
+	chassis.waitUntilDone();
+	delay(1200);
+	chassis.moveToPoint(-45, -52, 1000, {.forwards = false, .minSpeed = 30});
+	Scraper.retract();
+	chassis.turnToHeading(10, 800);
+	chassis.moveToPoint(-55.5, 30, 2500, {.maxSpeed = 100});
+	chassis.waitUntilDone();
+	pros::delay(200);
+	chassis.turnToHeading(-90, 800);
+	chassis.moveToPoint(-30, 35, 1000, {.forwards = false, .maxSpeed = 100});
+	chassis.waitUntilDone();
+	Top_Intake.move(127);
+	delay(1500);
+	Top_Intake.move(0);
+	chassis.swingToHeading(135, DriveSide::LEFT, 1000, {.maxSpeed = 80});
+	chassis.moveToPoint(-30, 14, 1500, {.maxSpeed = 80}); 
+	chassis.turnToHeading(-45, 900);
+	chassis.waitUntilDone();
+	delay(30);
+	chassis.moveToPoint(-11.5, 0 , 700, {.forwards = false}); //middle goal
+	Top_Intake.move(-80);
+	Front_intake_mg.move(0);
+	chassis.waitUntilDone();
+	Top_Intake.move(110);
+	Front_intake_mg.move(110);
+	Trapdoor.extend();
+	delay(1000);
+	Top_Intake.move(0);
+	chassis.swingToHeading(90, DriveSide::RIGHT, 1000, {.maxSpeed = 80});
+	chassis.moveToPoint(39, 15, 2000, {.maxSpeed = 100});
+	chassis.waitUntilDone();
+	pros::delay(200);
+	chassis.swingToHeading(180, DriveSide::RIGHT, 1000, {.maxSpeed = 80});
+	chassis.waitUntilDone();
+	Scraper.extend();
+	
+
+
 	// //right side
 	// chassis.setPose(46.5, 16.5, 270);
 	// Front_intake_mg.move(127);
@@ -296,7 +401,7 @@ void autonomous() {
 	// chassis.setPose(46.5, -16.5, 270);
 	// Front_intake_mg.move(127);
 	// chassis.moveToPoint(12, -26, 1100, {.forwards = true, .maxSpeed = 60});
-	// chassis.moveToPose(0.3, -45, 180, 2400, {.forwards = true, .lead = 0.2, .maxSpeed = 35});
+	// chassis.moveToPose(0.7, -45, 180, 2400, {.forwards = true, .lead = 0.2, .maxSpeed = 35});
 	// chassis.waitUntilDone();
 	// delay(200);
 	// chassis.moveToPoint(17.3, -23, 700, {.forwards = false, .minSpeed = 30});
@@ -388,24 +493,24 @@ void autonomous() {
 	// chassis.turnToHeading(50, 900);
 
 
-	// chassis.moveToPose(34, 44, 65, 1600, {.forwards = true, .lead = 0.15, .maxSpeed = 100, .minSpeed = 50, .earlyExitRange = 1});
+	// chassis.moveToPose(34, 43.2, 65, 1600, {.forwards = true, .lead = 0.15, .maxSpeed = 100, .minSpeed = 50, .earlyExitRange = 1});
 	// chassis.turnToHeading(90, 600);
 	// chassis.waitUntilDone();
 	// Scraper.extend();
 	// Trapdoor.retract();
 	// delay(450);
-	// chassis.moveToPoint(58, 50, 800, {.forwards = true, .maxSpeed = 60});
+	// chassis.moveToPoint(58, 49.1, 800, {.forwards = true, .maxSpeed = 60});
 	// Front_intake_mg.move(127);
 	// chassis.waitUntilDone();
 	// delay(500);
 	// Front_intake_mg.move(0);
-	// chassis.moveToPoint(10, 50, 1000, {.forwards = false, .maxSpeed = 60});
+	// chassis.moveToPoint(10, 49.5, 1000, {.forwards = false, .maxSpeed = 60});
 	// chassis.waitUntilDone();
 	// Front_intake_mg.move(127);
 	// Top_Intake.move(127);
 	// delay(2200);
-	// chassis.moveToPoint(27, 50.4 , 800, {.forwards = true, .minSpeed = 20});
-	// chassis.moveToPoint(10, 50.4, 1500, {.forwards = false, .minSpeed = 127});
+	// chassis.moveToPoint(27, 49.8 , 800, {.forwards = true, .minSpeed = 20});
+	// chassis.moveToPoint(10, 49.8, 1500, {.forwards = false, .minSpeed = 127});
 	// Scraper.retract();
 
 
@@ -441,22 +546,22 @@ void autonomous() {
 	// Top_Intake.move(110);
 	// Front_intake_mg.move(110);
 	// Trapdoor.extend();
-	// delay(600);
+	// delay(700);
 	// Top_Intake.move(0);
 	// // chassis.moveToPoint(13, -24 , 800, {.forwards = true, .minSpeed = 20});
 	// Trapdoor.retract();
 	// // chassis.turnToHeading(0, 500, {.earlyExitRange = 3});
 	// chassis.moveToPoint(15.5, 12 , 1500, {.forwards = true, .maxSpeed = 80, .minSpeed = 20, .earlyExitRange = 3});
-	// chassis.turnToPoint(40, 38, 300, {.earlyExitRange = 3});
-	// chassis.moveToPoint(40, 38, 1000, {.forwards = true, .maxSpeed = 70, .minSpeed = 20});
+	// chassis.turnToPoint(40, 38.8, 300, {.earlyExitRange = 3});
+	// chassis.moveToPoint(40, 38.8, 1000, {.forwards = true, .maxSpeed = 70, .minSpeed = 20});
 	// chassis.turnToHeading(90, 400);
 	// chassis.waitUntilDone();
 	// Scraper.extend();
 	// delay(150);
-	// chassis.moveToPoint(57, 39, 800, {.maxSpeed = 100});
+	// chassis.moveToPoint(57, 39.5, 800, {.maxSpeed = 100});
 	// chassis.waitUntilDone();
 	// delay(350);
-	// chassis.moveToPoint(9, 40, 800, {.forwards = false, .maxSpeed = 80});
+	// chassis.moveToPoint(9, 42.1, 800, {.forwards = false, .maxSpeed = 80});
 	// chassis.waitUntilDone();
 	// Front_intake_mg.move(127);
 	// Top_Intake.move(127);
@@ -466,101 +571,101 @@ void autonomous() {
 
 	// NEW SKILLS ____________________________
 	
-	chassis.setPose(-48, 16, 90);
-	Descore.retract();
-	Front_intake_mg.move(127);
-	chassis.moveToPoint(-19, 23, 2000, {.maxSpeed=56}); //move to the first 4 balls
-	chassis.turnToHeading(320, 800);	
-	chassis.moveToPoint(-30, 43, 1000);
-	chassis.turnToPoint(-52, 48, 900); //aim for loading zone
-	chassis.waitUntilDone();
-	Scraper.set_value(true);
-	delay(100);
-	chassis.moveToPoint(-52, 48.7, 1000, {.minSpeed = 20}); //move to the loading 
-	chassis.waitUntilDone();
-	delay(1500);
-	chassis.moveToPoint(-13, 50.3, 1500, {.forwards = false, .maxSpeed = 70}); // score
-	chassis.waitUntilDone();
-	Front_intake_mg.move(127);
-	Top_Intake.move(127);
-	delay(3100);
-	Front_intake_mg.move(0);
-	Top_Intake.move(0);
-	Scraper.set_value(false);
-	chassis.moveToPose(-35, 26, 180, 1000, {.forwards=true, .lead = 0.2, .maxSpeed = 70});
-	chassis.waitUntilDone();
-	delay(200);
-	chassis.turnToHeading(90, 800);
-	Front_intake_mg.move(127);
-	chassis.waitUntilDone();
-	delay(200);
-	chassis.moveToPoint(28, 25, 1800, {.forwards=true, .maxSpeed = 100}); //move to 2nd stack
-	chassis.waitUntilDone();
-	delay(200);
-	chassis.moveToPose(48, 48.2, 45, 1400, {.forwards=true, .lead = 0.2, .maxSpeed = 50});
-	chassis.turnToHeading(90, 800);
-	chassis.waitUntilDone();
-	Scraper.set_value(true);
-	delay(600);
-	chassis.moveToPoint(66, 48, 800, {.forwards=true, .maxSpeed = 90}); //loading 2
-	chassis.waitUntilDone();
-	delay(1500);
-	chassis.moveToPoint(23, 49.2, 1800, {.forwards = false, .maxSpeed = 70}); // score
-	chassis.waitUntilDone();
-	Front_intake_mg.move(127);
-	Top_Intake.move(127);
-	delay(3100);
-	Front_intake_mg.move(0);
-	Top_Intake.move(0);
-	Scraper.set_value(false);
-	chassis.moveToPoint(35, 52, 800, {.minSpeed = 70}); 
-	chassis.turnToPoint(33, -19, 800);
-	chassis.moveToPoint(33, -19, 2000, {.maxSpeed = 90});
-	Front_intake_mg.move(127);
-	chassis.turnToPoint(52, -42.7, 800);
-	chassis.moveToPoint(52, -42.7, 800, {.forwards=true, .maxSpeed = 70});
-	chassis.turnToHeading(90, 800);
-	chassis.waitUntilDone();
-	Scraper.set_value(true);
-	delay(500);
-	chassis.moveToPoint(64, -44, 800, {.forwards=true});
-	chassis.waitUntilDone();
-	delay(2000);
-	chassis.moveToPoint(23, -46, 1000, {.forwards = false, .maxSpeed = 70}); // score
-	chassis.waitUntilDone();
-	Front_intake_mg.move(127);
-	Top_Intake.move(127);
-	delay(3100);
-	Front_intake_mg.move(0);
-	Top_Intake.move(0);
-	Scraper.set_value(false);
-	chassis.moveToPose(40, -23.5, 0, 1500, {.forwards=true, .lead = 0.2, .maxSpeed = 60});
-	chassis.waitUntilDone();
-	delay(500);
-	chassis.turnToHeading(-90, 800);
-	Front_intake_mg.move(127);
-	chassis.moveToPoint(-2, -23.5, 1500, {.forwards=true, .maxSpeed = 90});
-	chassis.moveToPose(-33, -44, 230, 1500, {.forwards=true, .lead = 0.3, .maxSpeed = 70});
-	chassis.turnToHeading(-90, 800);
-	chassis.waitUntilDone();
-	Scraper.set_value(true);
-	delay(600);
-	chassis.moveToPoint(-52, -46.3, 1500, {.forwards=true, .maxSpeed = 90});
-	Front_intake_mg.move(127);
-	chassis.waitUntilDone();
-	delay(1500);
-	Front_intake_mg.move(0);
-	chassis.moveToPoint(-5, -47, 1500, {.forwards=false, .maxSpeed = 70});
-	chassis.waitUntilDone();
-	Front_intake_mg.move(127);
-	Top_Intake.move(127);
-	delay(3100);
-	Front_intake_mg.move(0);
-	Top_Intake.move(0);
-	chassis.turnToHeading(-70, 800);
-	Scraper.set_value(false);
-	chassis.moveToPose(-54, 50, 0, 2000, {.lead = 0.7, .minSpeed = 90});
-	chassis.moveToPose(-54, 40, 0, 2000, {.forwards = false});
+	// chassis.setPose(-48, 16, 90);
+	// Descore.retract();
+	// Front_intake_mg.move(127);
+	// chassis.moveToPoint(-19, 23, 2000, {.maxSpeed=56}); //move to the first 4 balls
+	// chassis.turnToHeading(320, 800);	
+	// chassis.moveToPoint(-30, 43, 1000);
+	// chassis.turnToPoint(-52, 48, 900); //aim for loading zone
+	// chassis.waitUntilDone();
+	// Scraper.set_value(true);
+	// delay(100);
+	// chassis.moveToPoint(-52, 48.7, 1000, {.maxSpeed = 60}); //move to the loading 
+	// chassis.waitUntilDone();
+	// delay(1500);
+	// chassis.moveToPoint(-13, 49.9, 1500, {.forwards = false, .maxSpeed = 70}); // score
+	// chassis.waitUntilDone();
+	// Front_intake_mg.move(127);
+	// Top_Intake.move(127);
+	// delay(3100);
+	// Front_intake_mg.move(0);
+	// Top_Intake.move(0);
+	// Scraper.set_value(false);
+	// chassis.moveToPose(-35, 26, 180, 1000, {.forwards=true, .lead = 0.2, .maxSpeed = 70});
+	// chassis.waitUntilDone();
+	// delay(200);
+	// chassis.turnToHeading(90, 800);
+	// Front_intake_mg.move(127);
+	// chassis.waitUntilDone();
+	// delay(200);
+	// chassis.moveToPoint(30, 25, 1800, {.forwards=true, .maxSpeed = 90}); //move to 2nd stack
+	// chassis.waitUntilDone();
+	// delay(200);
+	// chassis.moveToPose(48, 47.5, 45, 1400, {.forwards=true, .lead = 0.2, .maxSpeed = 50});
+	// chassis.turnToHeading(90, 800);
+	// chassis.waitUntilDone();
+	// Scraper.set_value(true);
+	// delay(600);
+	// chassis.moveToPoint(67, 48.8, 800, {.forwards=true, .maxSpeed = 60}); //loading 2
+	// chassis.waitUntilDone();
+	// delay(1500);
+	// chassis.moveToPoint(23, 49, 1800, {.forwards = false, .maxSpeed = 70}); // score
+	// chassis.waitUntilDone();
+	// Front_intake_mg.move(127);
+	// Top_Intake.move(127);
+	// delay(3100);
+	// Front_intake_mg.move(0);
+	// Top_Intake.move(0);
+	// Scraper.set_value(false);
+	// chassis.moveToPoint(35, 52, 800, {.minSpeed = 70}); 
+	// chassis.turnToPoint(33, -19, 800);
+	// chassis.moveToPose(33, -19, 200, 2000, {.maxSpeed = 100, .minSpeed = 20});
+	// Front_intake_mg.move(127);
+	// chassis.turnToPoint(52, -42.7, 800);
+	// chassis.moveToPoint(52, -43, 800, {.forwards=true, .maxSpeed = 70});
+	// chassis.turnToHeading(90, 800);
+	// chassis.waitUntilDone();
+	// Scraper.set_value(true);
+	// delay(500);
+	// chassis.moveToPoint(64, -45.3, 800, {.forwards=true});
+	// chassis.waitUntilDone();
+	// delay(2000);
+	// chassis.moveToPoint(23, -47.6, 1000, {.forwards = false, .maxSpeed = 60}); // score
+	// chassis.waitUntilDone();
+	// Front_intake_mg.move(127);
+	// Top_Intake.move(127);
+	// delay(3100);
+	// Front_intake_mg.move(0);
+	// Top_Intake.move(0);
+	// Scraper.set_value(false);
+	// chassis.moveToPose(40, -23.5, 0, 1500, {.forwards=true, .lead = 0.2, .maxSpeed = 60});
+	// chassis.waitUntilDone();
+	// delay(500);
+	// chassis.turnToHeading(-90, 800);
+	// Front_intake_mg.move(127);
+	// chassis.moveToPoint(-2, -23.5, 1500, {.forwards=true, .maxSpeed = 90});
+	// chassis.moveToPose(-33, -44.3, 230, 2000, {.forwards=true, .lead = 0.3, .maxSpeed = 70});
+	// chassis.turnToHeading(-90, 800);
+	// chassis.waitUntilDone();
+	// Scraper.set_value(true);
+	// delay(600);
+	// chassis.moveToPoint(-52, -47.3, 1500, {.forwards=true, .maxSpeed = 90});
+	// Front_intake_mg.move(127);
+	// chassis.waitUntilDone();
+	// delay(1500);
+	// Front_intake_mg.move(0);
+	// chassis.moveToPoint(-5, -47.6, 1500, {.forwards=false, .maxSpeed = 60});
+	// chassis.waitUntilDone();
+	// Front_intake_mg.move(127);
+	// Top_Intake.move(127);
+	// delay(3100);
+	// Front_intake_mg.move(0);
+	// Top_Intake.move(0);
+	// chassis.turnToHeading(-70, 800);
+	// Scraper.set_value(false);
+	// chassis.moveToPose(-54, 70, 0, 2800, {.lead = 0.7, .minSpeed = 90});
+	
 
 
 	
@@ -997,8 +1102,8 @@ void opcontrol() {
 			Front_intake_mg.move(127);
 		}
 		else if (master.get_digital(DIGITAL_R2)) {
-			Top_Intake.move(90);
-			Front_intake_mg.move(85);
+			Top_Intake.move(100);
+			Front_intake_mg.move(100);
 			Trapdoor.extend();
 		}
 		else if (master.get_digital(DIGITAL_L1)) {
